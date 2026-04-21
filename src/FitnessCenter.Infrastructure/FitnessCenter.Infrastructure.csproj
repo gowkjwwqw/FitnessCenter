@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FitnessCenter.Domain\FitnessCenter.Domain.csproj" />
+    <ProjectReference Include="..\FitnessCenter.Application\FitnessCenter.Application.csproj" />
+  </ItemGroup>
+</Project>
