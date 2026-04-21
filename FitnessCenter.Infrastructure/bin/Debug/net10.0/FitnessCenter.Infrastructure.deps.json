@@ -1,0 +1,56 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "FitnessCenter.Infrastructure/1.0.0": {
+        "dependencies": {
+          "FitnessCenter.Application": "1.0.0",
+          "FitnessCenter.Domain": "1.0.0"
+        },
+        "runtime": {
+          "FitnessCenter.Infrastructure.dll": {}
+        }
+      },
+      "FitnessCenter.Application/1.0.0": {
+        "dependencies": {
+          "FitnessCenter.Domain": "1.0.0"
+        },
+        "runtime": {
+          "FitnessCenter.Application.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "FitnessCenter.Domain/1.0.0": {
+        "runtime": {
+          "FitnessCenter.Domain.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "FitnessCenter.Infrastructure/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "FitnessCenter.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "FitnessCenter.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

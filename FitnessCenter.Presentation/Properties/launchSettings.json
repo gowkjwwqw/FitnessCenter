@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "FitnessCenter.Presentation": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:53740;http://localhost:53741"
+    }
+  }
+}
