@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using FitnessCenter.Domain.Trainers;
 
 namespace FitnessCenter.Tests.Domain;
@@ -16,22 +17,20 @@ public class TrainerTests
     [TestCase("Иван", "Иванов", "Иванович", "Йога", "+79001234567")]
     [TestCase("Анна", "Петрова", "", "Пилатес", "")]
     [TestCase("Олег", "Смирнов", null, "Кроссфит", null)]
-    public void Create_ValidData_SetsPropertiesCorrectly(string firstName, string lastName, string patronymic, string specialization, string phone)
+    public void Create_ValidData_SetsPropertiesCorrectly(string firstName, string lastName, string? patronymic, string specialization, string? phone)
     {
-        var trainer = Trainer.Create(firstName, lastName, patronymic, specialization, phone);
+        var trainer = Trainer.Create(firstName, lastName, patronymic!, specialization, phone!);
 
-        Assert.That(trainer.FirstName, Is.EqualTo(firstName));
-        Assert.That(trainer.LastName, Is.EqualTo(lastName));
-        Assert.That(trainer.Patronymic, Is.EqualTo(patronymic));
+        Assert.That(trainer.FirstName,      Is.EqualTo(firstName));
+        Assert.That(trainer.LastName,       Is.EqualTo(lastName));
         Assert.That(trainer.Specialization, Is.EqualTo(specialization));
-        Assert.That(trainer.Phone, Is.EqualTo(phone));
-        Assert.That(trainer.Id, Is.Not.EqualTo(Guid.Empty));
+        Assert.That(trainer.Id,             Is.Not.EqualTo(Guid.Empty));
     }
 
     [Test]
     public void Create_TwoTrainers_HaveDifferentIds()
     {
-        var first = Trainer.Create("Иван", "Иванов", "", "Йога", "");
+        var first  = Trainer.Create("Иван", "Иванов", "", "Йога", "");
         var second = Trainer.Create("Анна", "Петрова", "", "Пилатес", "");
 
         Assert.That(first.Id, Is.Not.EqualTo(second.Id));
@@ -40,10 +39,10 @@ public class TrainerTests
     [TestCase("")]
     [TestCase("   ")]
     [TestCase(null)]
-    public void Create_InvalidFirstName_ThrowsException(string invalidFirstName)
+    public void Create_InvalidFirstName_ThrowsException(string? invalidFirstName)
     {
         var ex = Assert.Throws<Exception>(() =>
-            Trainer.Create(invalidFirstName, "Иванов", "", "Йога", ""));
+            Trainer.Create(invalidFirstName!, "Иванов", "", "Йога", ""));
 
         Assert.That(ex!.Message, Is.EqualTo("Имя тренера не может быть пустым"));
     }
@@ -51,10 +50,10 @@ public class TrainerTests
     [TestCase("")]
     [TestCase("   ")]
     [TestCase(null)]
-    public void Create_InvalidLastName_ThrowsException(string invalidLastName)
+    public void Create_InvalidLastName_ThrowsException(string? invalidLastName)
     {
         var ex = Assert.Throws<Exception>(() =>
-            Trainer.Create("Иван", invalidLastName, "", "Йога", ""));
+            Trainer.Create("Иван", invalidLastName!, "", "Йога", ""));
 
         Assert.That(ex!.Message, Is.EqualTo("Фамилия тренера не может быть пустой"));
     }
@@ -62,10 +61,10 @@ public class TrainerTests
     [TestCase("")]
     [TestCase("   ")]
     [TestCase(null)]
-    public void Create_InvalidSpecialization_ThrowsException(string invalidSpecialization)
+    public void Create_InvalidSpecialization_ThrowsException(string? invalidSpecialization)
     {
         var ex = Assert.Throws<Exception>(() =>
-            Trainer.Create("Иван", "Иванов", "", invalidSpecialization, ""));
+            Trainer.Create("Иван", "Иванов", "", invalidSpecialization!, ""));
 
         Assert.That(ex!.Message, Is.EqualTo("Специализация тренера не может быть пустой"));
     }

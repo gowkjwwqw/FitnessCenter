@@ -1,7 +1,8 @@
+using NUnit.Framework;
+using Moq;
 using FitnessCenter.Application.Trainers;
 using FitnessCenter.Application.Trainers.Abstractions;
 using FitnessCenter.Domain.Trainers;
-using Moq;
 
 namespace FitnessCenter.Tests.Application;
 

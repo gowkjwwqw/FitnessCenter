@@ -1,3 +1,5 @@
+using NUnit.Framework;
+using Moq;
 using FitnessCenter.Application.Halls.Abstractions;
 using FitnessCenter.Application.Sessions;
 using FitnessCenter.Application.Sessions.Abstractions;
@@ -5,7 +7,6 @@ using FitnessCenter.Application.Trainers.Abstractions;
 using FitnessCenter.Domain.Halls;
 using FitnessCenter.Domain.Sessions;
 using FitnessCenter.Domain.Trainers;
-using Moq;
 
 namespace FitnessCenter.Tests.Application;
 
@@ -13,12 +14,12 @@ namespace FitnessCenter.Tests.Application;
 public class TrainingSessionsServiceTests
 {
     private Mock<ITrainingSessionsRepository> _sessionsRepositoryMock = null!;
-    private Mock<ITrainersRepository> _trainersRepositoryMock = null!;
-    private Mock<IHallsRepository> _hallsRepositoryMock = null!;
-    private TrainingSessionsService _service = null!;
+    private Mock<ITrainersRepository>         _trainersRepositoryMock = null!;
+    private Mock<IHallsRepository>            _hallsRepositoryMock    = null!;
+    private TrainingSessionsService           _service                = null!;
 
     private Trainer _trainer = null!;
-    private Hall _hall = null!;
+    private Hall    _hall    = null!;
     private static readonly DateTime ValidTime = new(2026, 4, 20, 10, 0, 0);
 
     [SetUp]
@@ -26,7 +27,7 @@ public class TrainingSessionsServiceTests
     {
         _sessionsRepositoryMock = new Mock<ITrainingSessionsRepository>();
         _trainersRepositoryMock = new Mock<ITrainersRepository>();
-        _hallsRepositoryMock = new Mock<IHallsRepository>();
+        _hallsRepositoryMock    = new Mock<IHallsRepository>();
 
         _service = new TrainingSessionsService(
             _sessionsRepositoryMock.Object,
@@ -34,7 +35,7 @@ public class TrainingSessionsServiceTests
             _hallsRepositoryMock.Object);
 
         _trainer = Trainer.Create("Иван", "Иванов", "", "Йога", "");
-        _hall = Hall.Create("Большой зал", "1 этаж", 20, "");
+        _hall    = Hall.Create("Большой зал", "1 этаж", 20, "");
 
         _trainersRepositoryMock.Setup(r => r.GetById(_trainer.Id)).Returns(_trainer);
         _hallsRepositoryMock.Setup(r => r.GetById(_hall.Id)).Returns(_hall);
@@ -130,14 +131,14 @@ public class TrainingSessionsServiceTests
         {
             TrainingSession.Create(_trainer.Id, _hall.Id, new DateTime(2026, 4, 20, 12, 0, 0)),
             TrainingSession.Create(_trainer.Id, _hall.Id, new DateTime(2026, 4, 19, 10, 0, 0)),
-            TrainingSession.Create(_trainer.Id, _hall.Id, new DateTime(2026, 4, 20, 9, 0, 0))
+            TrainingSession.Create(_trainer.Id, _hall.Id, new DateTime(2026, 4, 20, 9,  0, 0))
         };
         _sessionsRepositoryMock.Setup(r => r.GetByTrainerId(_trainer.Id)).Returns(sessions);
 
         var result = _service.GetTrainerScheduleByDate(_trainer.Id, date);
 
         Assert.That(result.Count, Is.EqualTo(2));
-        Assert.That(result[0].StartTime, Is.EqualTo(new DateTime(2026, 4, 20, 9, 0, 0)));
+        Assert.That(result[0].StartTime, Is.EqualTo(new DateTime(2026, 4, 20, 9,  0, 0)));
         Assert.That(result[1].StartTime, Is.EqualTo(new DateTime(2026, 4, 20, 12, 0, 0)));
     }
 
@@ -149,14 +150,14 @@ public class TrainingSessionsServiceTests
         {
             TrainingSession.Create(_trainer.Id, _hall.Id, new DateTime(2026, 4, 20, 18, 0, 0)),
             TrainingSession.Create(_trainer.Id, _hall.Id, new DateTime(2026, 4, 18, 10, 0, 0)),
-            TrainingSession.Create(_trainer.Id, _hall.Id, new DateTime(2026, 4, 20, 8, 0, 0))
+            TrainingSession.Create(_trainer.Id, _hall.Id, new DateTime(2026, 4, 20, 8,  0, 0))
         };
         _sessionsRepositoryMock.Setup(r => r.GetByHallId(_hall.Id)).Returns(sessions);
 
         var result = _service.GetHallOccupancyByDate(_hall.Id, date);
 
         Assert.That(result.Count, Is.EqualTo(2));
-        Assert.That(result[0].StartTime, Is.EqualTo(new DateTime(2026, 4, 20, 8, 0, 0)));
+        Assert.That(result[0].StartTime, Is.EqualTo(new DateTime(2026, 4, 20, 8,  0, 0)));
         Assert.That(result[1].StartTime, Is.EqualTo(new DateTime(2026, 4, 20, 18, 0, 0)));
     }
 

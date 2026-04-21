@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using FitnessCenter.Domain.Sessions;
 
 namespace FitnessCenter.Tests.Domain;
@@ -6,7 +7,7 @@ namespace FitnessCenter.Tests.Domain;
 public class TrainingSessionTests
 {
     private static readonly Guid TrainerId = Guid.NewGuid();
-    private static readonly Guid HallId = Guid.NewGuid();
+    private static readonly Guid HallId    = Guid.NewGuid();
 
     [TestCase(8)]
     [TestCase(9)]
@@ -35,13 +36,13 @@ public class TrainingSessionTests
     [Test]
     public void Create_TwoSessions_HaveDifferentIds()
     {
-        var first = TrainingSession.Create(TrainerId, HallId, new DateTime(2026, 4, 20, 10, 0, 0));
+        var first  = TrainingSession.Create(TrainerId, HallId, new DateTime(2026, 4, 20, 10, 0, 0));
         var second = TrainingSession.Create(TrainerId, HallId, new DateTime(2026, 4, 20, 11, 0, 0));
 
         Assert.That(first.Id, Is.Not.EqualTo(second.Id));
     }
 
-    [TestCase(8, 30)]
+    [TestCase(8,  30)]
     [TestCase(10, 15)]
     [TestCase(12, 45)]
     public void Create_StartTimeNotAtBeginningOfHour_ThrowsException(int hour, int minute)
