@@ -1,0 +1,11 @@
+C:\Users\mavk\Desktop\FitnessCenter\src\FitnessCenter.Domain\bin\Debug\net10.0\FitnessCenter.Domain.deps.json
+C:\Users\mavk\Desktop\FitnessCenter\src\FitnessCenter.Domain\bin\Debug\net10.0\FitnessCenter.Domain.dll
+C:\Users\mavk\Desktop\FitnessCenter\src\FitnessCenter.Domain\bin\Debug\net10.0\FitnessCenter.Domain.pdb
+C:\Users\mavk\Desktop\FitnessCenter\src\FitnessCenter.Domain\obj\Debug\net10.0\FitnessCenter.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mavk\Desktop\FitnessCenter\src\FitnessCenter.Domain\obj\Debug\net10.0\FitnessCenter.Domain.AssemblyInfoInputs.cache
+C:\Users\mavk\Desktop\FitnessCenter\src\FitnessCenter.Domain\obj\Debug\net10.0\FitnessCenter.Domain.AssemblyInfo.cs
+C:\Users\mavk\Desktop\FitnessCenter\src\FitnessCenter.Domain\obj\Debug\net10.0\FitnessCenter.Domain.csproj.CoreCompileInputs.cache
+C:\Users\mavk\Desktop\FitnessCenter\src\FitnessCenter.Domain\obj\Debug\net10.0\FitnessCenter.Domain.dll
+C:\Users\mavk\Desktop\FitnessCenter\src\FitnessCenter.Domain\obj\Debug\net10.0\refint\FitnessCenter.Domain.dll
+C:\Users\mavk\Desktop\FitnessCenter\src\FitnessCenter.Domain\obj\Debug\net10.0\FitnessCenter.Domain.pdb
+C:\Users\mavk\Desktop\FitnessCenter\src\FitnessCenter.Domain\obj\Debug\net10.0\ref\FitnessCenter.Domain.dll
